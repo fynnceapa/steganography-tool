@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Steganography Tool</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+<body>
+    <h1>Download Last Images</h1>
+    <div class="links">
+        <a href="{{ url_for('go_back') }}" class="button">Go back</a>
+    </div>
+    <h2>Last Encoded Image</h2>
+    <form method="get" action="/image/last/encoded" class="links">
+        <button type="submit" class="download">View message</button>
+        {% if text %}
+        <div class="decoded-message">
+            {{ text }}
+        </div>
+        {% endif %}
+     </form>
+
+    <h2>Last Decoded Image</h2>
+    <form method="get" action="/image/last/decoded" class="links">
+        <input type="submit" class="download" value="Decode">
+        {% if decoded_message %}
+        <div class="decoded-message">
+            {{ decoded_message }}
+        </div>
+        {% endif %}
+     </form>
+</body>
+</html>

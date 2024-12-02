@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Steganography Tool</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+<body>
+    <h1>Steganography Tool</h1>
+    
+    <div class="links">
+        <a href="/results" class="button">Go to results</a>
+    </div>
+
+    <h2>Encode Image</h2>
+    <form action="/image/encode" method="POST" enctype="multipart/form-data" class="links">
+        <label for="file-upload" class="download">
+            <p>Upload</p>
+        </label>
+        <input id="file-upload" type="file" name="file" accept="png" required /><br><br>
+        <input type="text" name="message" placeholder="Message to encode" required><br><br>
+        <input type="submit" class="download" value="Encode">
+    </form>
+
+    <h2>Decode Image</h2>
+    <form action="/image/decode" method="POST" enctype="multipart/form-data" class="links">
+        <label for="file-upload-dec" class="download">
+            <p>Upload</p>
+        </label>
+        <input id="file-upload-dec" type="file" name="file" accept="image/*" required><br><br>
+        <input type="submit" class="download" value="Decode">
+        {% if decoded_message %}
+        <div class="decoded-message">
+            {{ decoded_message }}
+        </div>
+        {% endif %}
+    </form>
+    <div class="bottom-left-content">
+        <p>Stan Andrei Razvan 313CA</p>
+        <p>andrei_razvan.stan@stud.acs.upb.ro</p>
+    </div>
+</body>
+</html>
